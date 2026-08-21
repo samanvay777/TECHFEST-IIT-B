@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --bg: #050505;
+    --cyan: #00f3ff;
+    --purple: #b026ff;
+    --text-main: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden;
+    background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    position: relative;
+    height: 100vh;
+}
+
+/* CRT Scanline Effect */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 999;
+}
+
+header {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: var(--cyan);
+    text-shadow: 0 0 10px var(--cyan);
+    letter-spacing: 2px;
+}
+
+.status {
+    color: var(--purple);
+    text-shadow: 0 0 5px var(--purple);
+}
+
+.hero {
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    text-transform: uppercase;
+    position: relative;
+    color: #fff;
+    text-shadow: 2px 2px 0px var(--cyan), -2px -2px 0px var(--purple);
+    margin-bottom: 1rem;
+    animation: glitch 3s infinite;
+}
+
+p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    min-height: 80px; /* Prevents layout shift during typing effect */
+    margin-bottom: 2rem;
+    color: #888;
+    line-height: 1.6;
+}
+
+.btn {
+    padding: 1rem 3rem;
+    font-family: inherit;
+    font-size: 1.2rem;
+    color: var(--bg);
+    background: var(--cyan);
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--cyan);
+}
+
+.btn:hover {
+    background: var(--purple);
+    color: #fff;
+    box-shadow: 0 0 25px var(--purple);
+    transform: translateY(-2px);
+}
+
+@keyframes glitch {
+    0%, 100% { text-shadow: 2px 2px 0px var(--cyan), -2px -2px 0px var(--purple); }
+    33% { text-shadow: -2px 2px 0px var(--cyan), 2px -2px 0px var(--purple); }
+    66% { text-shadow: 2px -2px 0px var(--cyan), -2px 2px 0px var(--purple); }
+}
